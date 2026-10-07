@@ -1,0 +1,1 @@
+<?php $pageTitle='Rooms'; require __DIR__ . '/../includes/auth.php'; require_login('admin'); require __DIR__ . '/../includes/header.php'; ?><h1>Rooms</h1><p style="color:var(--muted)">Track room capacity, occupancy and maintenance status here.</p><?php require __DIR__ . '/../includes/footer.php'; ?>

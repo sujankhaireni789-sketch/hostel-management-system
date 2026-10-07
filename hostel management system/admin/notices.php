@@ -1,0 +1,1 @@
+<?php $pageTitle='Notices'; require __DIR__ . '/../includes/auth.php'; require_login('admin'); require __DIR__ . '/../includes/header.php'; ?><h1>Notices</h1><p style="color:var(--muted)">Publish announcements for residents.</p><?php require __DIR__ . '/../includes/footer.php'; ?>

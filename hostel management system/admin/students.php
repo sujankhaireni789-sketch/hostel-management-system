@@ -1,0 +1,1 @@
+<?php $pageTitle='Residents'; require __DIR__ . '/../includes/auth.php'; require_login('admin'); require __DIR__ . '/../includes/header.php'; ?><h1>Residents</h1><p style="color:var(--muted)">Connect this page to your students table to manage resident records.</p><?php require __DIR__ . '/../includes/footer.php'; ?>

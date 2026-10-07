@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Northstar Hostel | Records</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+	<script src="https://unpkg.com/lucide@latest"></script>
+	<style>
+		:root { --ink:#17261e; --muted:#708078; --line:#e5ebe6; --paper:#fbfcfa; --green:#1f6b4c; --mint:#dff0e6; --yellow:#f3c95f; --red:#d96855; --sidebar:#173d2d; }
+		* { box-sizing:border-box; }
+		body { margin:0; background:var(--paper); color:var(--ink); font-family:'DM Sans',sans-serif; }
+		button,input,select { font:inherit; }
+		button { cursor:pointer; }
+		.app { display:grid; grid-template-columns:248px 1fr; min-height:100vh; }
+		aside { background:var(--sidebar); color:#dcebe2; padding:28px 17px; display:flex; flex-direction:column; }
+		.brand { display:flex; align-items:center; gap:11px; padding:0 14px 42px; color:#fff; }
+		.brand-mark { width:35px; height:35px; border-radius:10px 10px 10px 3px; background:var(--yellow); color:var(--sidebar); display:grid; place-items:center; font-family:'Space Grotesk'; font-weight:700; font-size:18px; }
+		.brand strong { display:block; font:700 17px 'Space Grotesk'; letter-spacing:-.4px; }
+		.brand small { color:#91b3a0; font-size:10px; letter-spacing:1.3px; text-transform:uppercase; }
+		.nav-label { color:#7da18e; font-size:10px; text-transform:uppercase; letter-spacing:1.5px; padding:0 14px 10px; }
+		nav { display:grid; gap:4px; }
+		.nav-item { border:0; background:transparent; color:#b5d0c0; border-radius:8px; display:flex; gap:13px; align-items:center; padding:12px 14px; text-align:left; font-size:13px; transition:.2s; }
+		.nav-item:hover,.nav-item.active { background:#286047; color:white; }
+		.nav-item.active { box-shadow:inset 3px 0 var(--yellow); }
+		.nav-item i { width:17px; height:17px; }
+		.aside-bottom { margin-top:auto; border-top:1px solid #2d5a45; padding:20px 14px 0; }
+		.profile-mini { display:flex; align-items:center; gap:10px; font-size:12px; }
+		.avatar { border-radius:50%; width:33px; height:33px; background:#c4dfce; color:var(--green); display:grid; place-items:center; font-weight:700; font-size:11px; }
+		.profile-mini small { display:block; color:#86aa95; margin-top:2px; }
+		main { padding:31px 42px 50px; max-width:1500px; width:100%; }
+		.topbar { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:32px; }
+		h1,h2,h3,p { margin:0; } h1 { font:700 28px 'Space Grotesk'; letter-spacing:-1px; } h2 { font:600 17px 'Space Grotesk'; } h3 { font:600 14px 'Space Grotesk'; }
+		.eyebrow { color:var(--green); font-size:11px; text-transform:uppercase; letter-spacing:1.6px; margin-bottom:8px; font-weight:700; }
+		.top-actions { display:flex; gap:10px; align-items:center; }
+		.date { color:var(--muted); font-size:12px; margin-right:12px; }
+		.icon-btn,.primary-btn { border:1px solid var(--line); background:white; color:var(--ink); border-radius:7px; height:38px; display:inline-flex; align-items:center; gap:8px; padding:0 13px; font-size:12px; font-weight:600; }
+		.icon-btn { width:38px; padding:0; justify-content:center; }
+		.primary-btn { background:var(--green); border-color:var(--green); color:#fff; }
+		.primary-btn:hover { background:#174f38; }
+		.stats { display:grid; grid-template-columns:repeat(4,1fr); gap:15px; margin-bottom:29px; }
+		.stat { border:1px solid var(--line); border-radius:10px; background:#fff; padding:20px; position:relative; overflow:hidden; }
+		.stat:after { content:''; position:absolute; right:-21px; bottom:-25px; width:80px; height:80px; border-radius:50%; background:var(--mint); }
+		.stat .icon { width:33px; height:33px; border-radius:8px; display:grid; place-items:center; background:#eef6f0; color:var(--green); margin-bottom:17px; }
+		.stat .icon i { width:17px; }.stat-number { font:700 26px 'Space Grotesk'; letter-spacing:-1px; }.stat-label { font-size:12px; color:var(--muted); margin-top:4px; }
+		.stat-change { position:absolute; right:15px; top:21px; color:var(--green); font-size:10px; font-weight:700; background:var(--mint); padding:4px 6px; border-radius:4px; z-index:1; }
+		.grid { display:grid; grid-template-columns:minmax(0,1.5fr) minmax(290px,.75fr); gap:20px; }
+		.panel { background:#fff; border:1px solid var(--line); border-radius:10px; overflow:hidden; }
+		.panel-head { display:flex; justify-content:space-between; align-items:center; padding:20px 21px; border-bottom:1px solid var(--line); }
+		.panel-sub { color:var(--muted); font-size:11px; margin-top:5px; }.view-link { color:var(--green); font-size:11px; font-weight:700; border:0; background:none; }
+		.toolbar { padding:13px 20px; display:flex; gap:9px; border-bottom:1px solid var(--line); }
+		.search { display:flex; gap:8px; align-items:center; border:1px solid var(--line); padding:0 10px; height:34px; flex:1; border-radius:6px; color:var(--muted); }.search i { width:15px; }.search input { border:0; outline:0; width:100%; font-size:12px; color:var(--ink); }.filter { border:1px solid var(--line); background:white; border-radius:6px; padding:0 9px; font-size:11px; color:var(--muted); }
+		table { border-collapse:collapse; width:100%; } th { color:#8a9690; font-size:10px; text-transform:uppercase; letter-spacing:1px; font-weight:600; text-align:left; padding:12px 20px; } td { border-top:1px solid #f0f3f0; padding:13px 20px; font-size:12px; vertical-align:middle; } .resident { display:flex; align-items:center; gap:10px; font-weight:600; }.resident .avatar { width:29px; height:29px; font-size:10px; background:#e5f1e8; }.muted { color:var(--muted); font-size:11px; }.room { color:var(--green); font-weight:700; }.badge { display:inline-block; padding:5px 8px; border-radius:4px; font-size:10px; font-weight:700; }.paid,.active-badge { color:#25704e; background:#e2f2e7; }..pending { color:#9b721c; background:#fff3d2; }.overdue { color:#a94a3c; background:#fde8e4; }
+		.right { display:grid; gap:20px; align-content:start; }.occupancy { padding:21px; }.occupancy-number { display:flex; align-items:baseline; gap:8px; margin:18px 0 12px; }.occupancy-number strong { font:700 37px 'Space Grotesk'; }.occupancy-number span { color:var(--muted); font-size:12px; }.progress { height:9px; background:#edf1ed; border-radius:5px; overflow:hidden; }.progress div { height:100%; width:82%; background:var(--green); border-radius:5px; }.occupancy-foot { display:flex; justify-content:space-between; margin-top:11px; color:var(--muted); font-size:11px; }.occupancy-foot strong { color:var(--ink); }
+		.activity { padding-bottom:8px; }.activity-list { padding:7px 21px; }.activity-item { display:grid; grid-template-columns:27px 1fr auto; gap:11px; padding:12px 0; align-items:start; }.activity-dot { width:27px; height:27px; border-radius:7px; display:grid; place-items:center; background:#edf6ef; color:var(--green); }.activity-dot i { width:14px; }.activity-item p { font-size:11px; line-height:1.4; }.activity-item p strong { font-weight:700; }.activity-item time { color:#98a39d; font-size:10px; white-space:nowrap; }
+		.toast { position:fixed; right:25px; bottom:25px; background:var(--ink); color:white; padding:13px 16px; border-radius:7px; font-size:12px; opacity:0; transform:translateY(10px); pointer-events:none; transition:.25s; }.toast.show { opacity:1; transform:none; }
+		.modal-backdrop { display:none; position:fixed; inset:0; background:#10271c66; place-items:center; z-index:4; }.modal-backdrop.open { display:grid; }.modal { background:white; width:min(420px,calc(100% - 32px)); border-radius:10px; padding:25px; box-shadow:0 20px 60px #10271c30; }.modal-head { display:flex; justify-content:space-between; margin-bottom:19px; }.modal form { display:grid; gap:12px; }.modal label { display:grid; gap:6px; color:var(--muted); font-size:11px; }.modal input,.modal select { height:38px; border:1px solid var(--line); border-radius:6px; padding:0 10px; color:var(--ink); outline:none; }.form-actions { display:flex; justify-content:flex-end; gap:8px; margin-top:8px; }
+		@media (max-width:900px) { .app { grid-template-columns:70px 1fr; } aside { padding:22px 10px; }.brand { padding:0 8px 42px; }.brand > div:last-child,.nav-label,.nav-item span,.profile-mini > div { display:none; }.brand-mark { margin:auto; }.nav-item { justify-content:center; padding:12px; }.aside-bottom { padding:17px 0 0; }.profile-mini { justify-content:center; } main { padding:25px 24px; }.stats { grid-template-columns:repeat(2,1fr); }.grid { grid-template-columns:1fr; } }
+		@media (max-width:580px) { .app { display:block; } aside { height:auto; padding:13px 15px; flex-direction:row; align-items:center; justify-content:space-between; }.brand { padding:0; }.nav-label,.aside-bottom { display:none; } nav { display:flex; gap:3px; }.nav-item { padding:9px; }.nav-item:nth-child(n+5) { display:none; } main { padding:24px 16px 35px; }.topbar { margin-bottom:24px; }.top-actions .date,.top-actions .icon-btn { display:none; } h1 { font-size:24px; }.stats { gap:9px; margin-bottom:18px; }.stat { padding:14px; }.stat .icon { margin-bottom:13px; }.stat-number { font-size:22px; }.panel-head { padding:16px; }.toolbar { padding:11px 14px; } th,td { padding:11px 14px; }.panel { overflow-x:auto; }.panel table { min-width:520px; }.right { gap:15px; } }
+	</style>
+</head>
+<body>
+	<div class="app">
+		<aside>
+			<div class="brand"><div class="brand-mark">N</div><div><strong>northstar</strong><small>boys hostel · 2026</small></div></div>
+			<div class="nav-label">Workspace</div>
+			<nav>
+				<button class="nav-item active" data-section="Overview"><i data-lucide="layout-dashboard"></i><span>Overview</span></button>
+				<button class="nav-item" data-section="Residents"><i data-lucide="users"></i><span>Residents</span></button>
+				<button class="nav-item" data-section="Rooms"><i data-lucide="bed-double"></i><span>Rooms</span></button>
+				<button class="nav-item" data-section="Payments"><i data-lucide="wallet-cards"></i><span>Payments</span></button>
+				<button class="nav-item" data-section="Attendance"><i data-lucide="clipboard-check"></i><span>Attendance</span></button>
+				<button class="nav-item" data-section="Complaints"><i data-lucide="message-square-warning"></i><span>Complaints</span></button>
+				<button class="nav-item" data-section="Notices"><i data-lucide="megaphone"></i><span>Notices</span></button>
+			</nav>
+			<div class="aside-bottom"><div class="profile-mini"><div class="avatar">AK</div><div><strong>Arun Kumar</strong><small>Hostel warden</small></div><i data-lucide="more-horizontal" style="margin-left:auto;width:16px"></i></div></div>
+		</aside>
+		<main>
+			<header class="topbar"><div><div class="eyebrow">Wednesday, 16 September 2026</div><h1 id="page-title">Good morning, Arun.</h1></div><div class="top-actions"><span class="date">Last synced 2 mins ago</span><button class="icon-btn" title="Notifications"><i data-lucide="bell"></i></button><button class="primary-btn" id="add-resident"><i data-lucide="plus"></i> Add resident</button></div></header>
+			<section class="stats">
+				<article class="stat"><div class="icon"><i data-lucide="users"></i></div><span class="stat-change">+6 this month</span><div class="stat-number">148</div><div class="stat-label">Total residents</div></article>
+				<article class="stat"><div class="icon"><i data-lucide="door-open"></i></div><span class="stat-change">82% full</span><div class="stat-number">32 <small style="font:500 13px 'DM Sans';color:var(--muted)">/ 39</small></div><div class="stat-label">Rooms occupied</div></article>
+				<article class="stat"><div class="icon"><i data-lucide="indian-rupee"></i></div><span class="stat-change">+12.4%</span><div class="stat-number">₹ 2.4L</div><div class="stat-label">Collected this month</div></article>
+				<article class="stat"><div class="icon"><i data-lucide="circle-alert"></i></div><span class="stat-change" style="color:#a94a3c;background:#fde8e4">Needs review</span><div class="stat-number">07</div><div class="stat-label">Open complaints</div></article>
+			</section>
+			<section class="grid">
+				<div class="panel"><div class="panel-head"><div><h2>Residents</h2><p class="panel-sub">Recently added and active residents</p></div><button class="view-link" id="view-all">View all <span>→</span></button></div><div class="toolbar"><div class="search"><i data-lucide="search"></i><input id="resident-search" placeholder="Search by name or room..."></div><select class="filter" id="status-filter"><option value="all">All status</option><option value="active">Active</option><option value="pending">Pending</option></select></div><table><thead><tr><th>Resident</th><th>Room</th><th>Joined</th><th>Fee status</th></tr></thead><tbody id="resident-list"><tr data-status="active"><td><div class="resident"><div class="avatar">RV</div><div>Rohan Verma<div class="muted">ID · NS-0248</div></div></div></td><td class="room">A-204</td><td class="muted">Sep 12, 2026</td><td><span class="badge paid">Paid</span></td></tr><tr data-status="active"><td><div class="resident"><div class="avatar">AS</div><div>Aditya Singh<div class="muted">ID · NS-0247</div></div></div></td><td class="room">B-108</td><td class="muted">Sep 10, 2026</td><td><span class="badge pending">Pending</span></td></tr><tr data-status="active"><td><div class="resident"><div class="avatar">NK</div><div>Nikhil Kumar<div class="muted">ID · NS-0246</div></div></div></td><td class="room">A-112</td><td class="muted">Sep 08, 2026</td><td><span class="badge paid">Paid</span></td></tr><tr data-status="pending"><td><div class="resident"><div class="avatar">SM</div><div>Sahil Mehta<div class="muted">ID · NS-0245</div></div></div></td><td class="room">C-301</td><td class="muted">Sep 05, 2026</td><td><span class="badge overdue">Overdue</span></td></tr></tbody></table></div>
+				<div class="right"><div class="panel occupancy"><div class="panel-head" style="padding:0 0 2px;border:0"><div><h2>Occupancy</h2><p class="panel-sub">Current room utilization</p></div><i data-lucide="bar-chart-3" style="color:var(--green);width:18px"></i></div><div class="occupancy-number"><strong>82%</strong><span>of total capacity</span></div><div class="progress"><div></div></div><div class="occupancy-foot"><span><strong>148</strong> occupied beds</span><span><strong>32</strong> available</span></div></div><div class="panel activity"><div class="panel-head"><div><h2>Recent activity</h2><p class="panel-sub">Live updates from your hostel</p></div><button class="icon-btn" title="Refresh activity" id="refresh"><i data-lucide="refresh-cw"></i></button></div><div class="activity-list" id="activity-list"><div class="activity-item"><div class="activity-dot"><i data-lucide="user-plus"></i></div><p><strong>Rohan Verma</strong> was added to room A-204</p><time>2m</time></div><div class="activity-item"><div class="activity-dot"><i data-lucide="credit-card"></i></div><p>Fee payment received from <strong>Vivek Sharma</strong></p><time>1h</time></div><div class="activity-item"><div class="activity-dot"><i data-lucide="wrench"></i></div><p>Maintenance request closed in room <strong>B-212</strong></p><time>3h</time></div></div></div></div>
+			</section>
+		</main>
+	</div>
+	<div class="modal-backdrop" id="modal"><div class="modal"><div class="modal-head"><div><div class="eyebrow">New record</div><h2>Add resident</h2></div><button class="icon-btn" id="close-modal"><i data-lucide="x"></i></button></div><form id="resident-form"><label>Full name<input name="name" required placeholder="e.g. Karan Malhotra"></label><label>Room number<input name="room" required placeholder="e.g. A-305"></label><label>Fee status<select name="status"><option value="pending">Pending</option><option value="active">Paid</option></select></label><div class="form-actions"><button type="button" class="icon-btn" id="cancel-modal">Cancel</button><button class="primary-btn">Save resident</button></div></form></div></div>
+	<div class="toast" id="toast">Resident added successfully</div>
+	<script>
+		lucide.createIcons();
+		const modal = document.getElementById('modal'), toast = document.getElementById('toast');
+		const notify = message => { toast.textContent = message; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 2400); };
+		document.querySelectorAll('.nav-item').forEach(item => item.addEventListener('click', () => { document.querySelector('.nav-item.active').classList.remove('active'); item.classList.add('active'); document.getElementById('page-title').textContent = item.dataset.section === 'Overview' ? 'Good morning, Arun.' : item.dataset.section; notify(item.dataset.section + ' view selected'); }));
+		document.getElementById('add-resident').addEventListener('click', () => modal.classList.add('open'));
+		['close-modal','cancel-modal'].forEach(id => document.getElementById(id).addEventListener('click', () => modal.classList.remove('open')));
+		document.getElementById('resident-form').addEventListener('submit', event => { event.preventDefault(); const form = new FormData(event.target); const initials = form.get('name').split(' ').map(word => word[0]).join('').slice(0,2).toUpperCase(); const row = document.createElement('tr'); row.dataset.status = 'pending'; row.innerHTML = `<td><div class="resident"><div class="avatar">${initials}</div><div>${form.get('name')}<div class="muted">ID · NS-0249</div></div></div></td><td class="room">${form.get('room')}</td><td class="muted">Sep 16, 2026</td><td><span class="badge pending">Pending</span></td>`; document.getElementById('resident-list').prepend(row); modal.classList.remove('open'); event.target.reset(); notify('Resident added successfully'); });
+		function filterResidents() { const query = document.getElementById('resident-search').value.toLowerCase(); const status = document.getElementById('status-filter').value; document.querySelectorAll('#resident-list tr').forEach(row => { row.hidden = !row.textContent.toLowerCase().includes(query) || (status !== 'all' && row.dataset.status !== status); }); }
+		document.getElementById('resident-search').addEventListener('input', filterResidents); document.getElementById('status-filter').addEventListener('change', filterResidents); document.getElementById('view-all').addEventListener('click', () => { document.getElementById('resident-search').focus(); notify('Showing resident records'); }); document.getElementById('refresh').addEventListener('click', () => notify('Activity is up to date'));
+	</script>
+</body>
+</html>
+ 

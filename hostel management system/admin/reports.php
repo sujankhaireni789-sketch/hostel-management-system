@@ -1,0 +1,1 @@
+<?php $pageTitle='Reports'; require __DIR__ . '/../includes/auth.php'; require_login('admin'); require __DIR__ . '/../includes/header.php'; ?><h1>Reports</h1><p style="color:var(--muted)">Generate occupancy, fee and attendance reports.</p><?php require __DIR__ . '/../includes/footer.php'; ?>

@@ -1,0 +1,1 @@
+<?php $pageTitle='My Attendance'; require __DIR__ . '/../includes/auth.php'; require_login('student'); require __DIR__ . '/../includes/header.php'; ?><h1>My attendance</h1><p style="color:var(--muted)">View your daily attendance history.</p><?php require __DIR__ . '/../includes/footer.php'; ?>

@@ -1,0 +1,1 @@
+<?php $pageTitle='My Profile'; require __DIR__ . '/../includes/auth.php'; require_login('student'); require __DIR__ . '/../includes/header.php'; ?><h1>My profile</h1><p style="color:var(--muted)">View and update your resident details.</p><?php require __DIR__ . '/../includes/footer.php'; ?>

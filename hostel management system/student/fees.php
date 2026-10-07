@@ -1,0 +1,1 @@
+<?php $pageTitle='My Fees'; require __DIR__ . '/../includes/auth.php'; require_login('student'); require __DIR__ . '/../includes/header.php'; ?><h1>My fees</h1><p style="color:var(--muted)">View fee history and outstanding dues.</p><?php require __DIR__ . '/../includes/footer.php'; ?>

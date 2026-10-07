@@ -1,0 +1,1 @@
+<?php $pageTitle='Fees'; require __DIR__ . '/../includes/auth.php'; require_login('admin'); require __DIR__ . '/../includes/header.php'; ?><h1>Fees</h1><p style="color:var(--muted)">Record resident payments and outstanding balances here.</p><?php require __DIR__ . '/../includes/footer.php'; ?>

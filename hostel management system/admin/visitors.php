@@ -1,0 +1,1 @@
+<?php $pageTitle='Visitors'; require __DIR__ . '/../includes/auth.php'; require_login('admin'); require __DIR__ . '/../includes/header.php'; ?><h1>Visitors</h1><p style="color:var(--muted)">Log visitor entry and exit records.</p><?php require __DIR__ . '/../includes/footer.php'; ?>

@@ -1,0 +1,1 @@
+<?php $pageTitle='Complaints'; require __DIR__ . '/../includes/auth.php'; require_login('admin'); require __DIR__ . '/../includes/header.php'; ?><h1>Complaints</h1><p style="color:var(--muted)">Review and resolve resident complaints and maintenance requests.</p><?php require __DIR__ . '/../includes/footer.php'; ?>
